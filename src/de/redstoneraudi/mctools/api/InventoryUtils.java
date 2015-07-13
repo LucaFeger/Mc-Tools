@@ -1,15 +1,14 @@
 package de.redstoneraudi.mctools.api;
 
-import java.util.Arrays;
-
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class API {
+import java.util.Arrays;
+
+public class InventoryUtils {
 	
-	public void addItemToInv(Player p, Inventory inv, int slot, ItemStack item, String name, String lore) {
+	public void setItem(Inventory inv, int slot, ItemStack item, String name, String... lore) {
 		ItemStack is = new ItemStack(item);
 		ItemMeta isMeta = is.getItemMeta();
 		isMeta.setDisplayName(name);

@@ -5,8 +5,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class McTools extends JavaPlugin {
 	
-	public String prefix = "§7[§6McTools§7] §r";
-	public String noPerm = prefix + "§4You don't have Permission to do that!";
+	private final String prefix = "§7[§6McTools§7] §r";
+	private final String noPerm = prefix + "§4You don't have Permission to do that!";
 	
 	@Override
 	public void onEnable() {
@@ -14,4 +14,11 @@ public class McTools extends JavaPlugin {
 		+ getDescription().getAuthors() + " §9enabled!");
 	}
 
+	public String getNoPermMessage() {
+		return noPerm;
+	}
+
+	public String getPrefix() {
+		return prefix;
+	}
 }
