@@ -2,3 +2,7 @@ name: McTools
 version: 1.0
 author: [RedstoneRaudi, Aquaatic]
 main: de.redstoneraudi.mctools.McTools
+
+commands:
+  mctools:
+    aliases: [tools, mc-tools]
