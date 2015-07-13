@@ -4,8 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 
-public class INV_select {
+public class InventorySelect {
 	
-	public Inventory inv_select = Bukkit.createInventory(null, InventoryType.HOPPER, "§3Category");
+	public Inventory invSelect = Bukkit.createInventory(null, InventoryType.HOPPER, "§3Category");
 
 }
