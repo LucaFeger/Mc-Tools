@@ -1,4 +1,4 @@
-package de.redstoneraudi.mctools.api;
+package de.redstoneraudi.mctools.utils;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
