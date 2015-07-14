@@ -29,7 +29,7 @@ public class CommandTools implements CommandExecutor {
 			}
 			
 		} else {
-			plugin.getFailCommandMessage();
+			sender.sendMessage(plugin.getFailCommandMessage());
 		}
 		return false;
 	}
