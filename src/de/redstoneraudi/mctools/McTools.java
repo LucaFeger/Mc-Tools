@@ -33,7 +33,7 @@ public class McTools extends JavaPlugin {
 	}
 	
 	public void registerEvents() {
-		Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
+		Bukkit.getPluginManager().registerEvents(new InventoryClickListener(this), this);
 	}
 	
 	public void registerCommands() {
