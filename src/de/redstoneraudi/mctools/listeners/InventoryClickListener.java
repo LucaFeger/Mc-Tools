@@ -7,7 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import de.redstoneraudi.mctools.McTools;
+import de.redstoneraudi.mctools.events.PlayerChooseEvent;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
+import de.redstoneraudi.mctools.utils.PlayerChooseInv;
+import de.redstoneraudi.mctools.utils.TrollRocket;
 
 public class InventoryClickListener implements Listener {
 	
@@ -34,6 +37,9 @@ public class InventoryClickListener implements Listener {
 					p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 //					------------Message: Prefix + The Player + The Player in your Message + was freezt--------------
 //					------Cancel PlayerMoveEvent for this Player!-------------				
+				}else if(e.getCurrentItem().getType() == Material.FIREWORK || e.getInventory().getName().equals("§3§lTroll-Items")){
+					p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+					PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
 				}
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
@@ -43,4 +49,12 @@ public class InventoryClickListener implements Listener {
 		}
 	}
 
+	
+	@EventHandler
+	public void onChoose(PlayerChooseEvent e){
+		if(e.getItem().getType() == Material.FIREWORK || e.getInventory().getName().equals("§3§lTroll-Items")){
+			TrollRocket.RocketStart(plugin, e.getTarget());
+		}
+	}
+	
 }
