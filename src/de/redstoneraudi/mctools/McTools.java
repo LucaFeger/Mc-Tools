@@ -1,10 +1,12 @@
 package de.redstoneraudi.mctools;
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.redstoneraudi.mctools.cmd.CommandTools;
 import de.redstoneraudi.mctools.listeners.InventoryClickListener;
+import de.redstoneraudi.mctools.utils.PlayerChooseInv;
 
 public class McTools extends JavaPlugin {
 	
@@ -33,7 +35,9 @@ public class McTools extends JavaPlugin {
 	}
 	
 	public void registerEvents() {
-		Bukkit.getPluginManager().registerEvents(new InventoryClickListener(this), this);
+		PluginManager pm = Bukkit.getPluginManager();
+		pm.registerEvents(new InventoryClickListener(this), this);
+		pm.registerEvents(new PlayerChooseInv(this), this);
 	}
 	
 	public void registerCommands() {
