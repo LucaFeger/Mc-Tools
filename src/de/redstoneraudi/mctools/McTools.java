@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.redstoneraudi.mctools.cmd.CommandTools;
 import de.redstoneraudi.mctools.listeners.InventoryClickListener;
+import de.redstoneraudi.mctools.listeners.MoveEvent;
 import de.redstoneraudi.mctools.utils.PlayerChooseInv;
 
 public class McTools extends JavaPlugin {
@@ -38,6 +39,7 @@ public class McTools extends JavaPlugin {
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new InventoryClickListener(this), this);
 		pm.registerEvents(new PlayerChooseInv(this), this);
+		pm.registerEvents(new MoveEvent(this), this);
 	}
 	
 	public void registerCommands() {
