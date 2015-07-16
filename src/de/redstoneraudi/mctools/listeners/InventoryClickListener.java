@@ -1,5 +1,8 @@
 package de.redstoneraudi.mctools.listeners;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,6 +19,8 @@ import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
 public class InventoryClickListener implements Listener {
+	
+	public static List<String> freezedPlayers = new ArrayList<String>();
 	
 	private McTools plugin;
 	public InventoryClickListener(McTools plugin) {
@@ -73,7 +78,14 @@ public class InventoryClickListener implements Listener {
 	public void onChoose(PlayerChooseEvent e){
 		if(e.getItem().getType() == Material.FIREWORK && e.getInventory().getName().equals("§3§lTroll-Items")){
 			TrollRocket.RocketStart(plugin, e.getTarget());
-		}
+		}else
+			if(e.getItem().getType() == Material.ICE && e.getInventory().getName().equals("§3§lTroll-Items")) {
+				if(freezedPlayers.contains(e.getTarget().getName())) {
+					freezedPlayers.remove(e.getTarget().getName());
+				} else {
+					freezedPlayers.add(e.getTarget().getName());
+				}
+			}
 	}
 	
 	//Admin-Actions
@@ -86,6 +98,7 @@ public class InventoryClickListener implements Listener {
 				e.getTarget().setOp(!e.getTarget().isOp());
 		}
 	}
+	
 	
 	@EventHandler
 	public void onTrueChoose(TrueOrFalseChooseEvent e){
