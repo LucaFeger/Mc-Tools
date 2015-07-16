@@ -22,8 +22,8 @@ public class OpenInvUtils {
 	}
 	
 	public static void openTrollInv(Player p) {
-		InventoryUtils.setItem(invTrollTool, 0, Material.ICE, "§5Freezer", "§7You can freeze a Player!");
-		InventoryUtils.setItem(invTrollTool, 1, Material.FIREWORK, "§5Rocket", "§7Hurls a player in the air!");
+		InventoryUtils.setItem(invTrollTool, 0, Material.ICE, "§5Dance", "§7The Player is 'Dancing' :D!");
+		InventoryUtils.setItem(invTrollTool, 1, Material.FIREWORK, "§5Rocket", "§7Hurls a Player in the air!");
 		p.openInventory(invTrollTool);
 	}
 
