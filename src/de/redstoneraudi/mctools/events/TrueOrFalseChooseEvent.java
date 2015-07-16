@@ -13,12 +13,14 @@ public class TrueOrFalseChooseEvent extends PlayerEvent{
 	private Inventory inventory;
 	private ItemStack is;
 	private boolean yes;
+	private String question ;
 	
-	public TrueOrFalseChooseEvent(Player who, boolean yes, Inventory inv, ItemStack item) {
+	public TrueOrFalseChooseEvent(Player who, boolean yes, Inventory inv,String question,  ItemStack item) {
 		super(who);
 		this.is = item;
 		this.inventory = inv;
 		this.yes = yes;
+		this.question = question;
 	}
 	
 	/**
@@ -30,6 +32,10 @@ public class TrueOrFalseChooseEvent extends PlayerEvent{
 	
 	public boolean isYes() {
 		return yes;
+	}
+	
+	public String getQuestion() {
+		return question;
 	}
 	
 	/**

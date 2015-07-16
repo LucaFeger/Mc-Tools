@@ -13,7 +13,7 @@ import de.redstoneraudi.mctools.events.TrueOrFalseChooseEvent;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
 import de.redstoneraudi.mctools.utils.TrollRocket;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
-import de.redstoneraudi.mctools.utils.chooser.TrueOrFlalseChooseInv;
+import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
 public class InventoryClickListener implements Listener {
 	
@@ -58,7 +58,7 @@ public class InventoryClickListener implements Listener {
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
 				}else 
 					if(e.getCurrentItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lAdmin-Tools")){
-						TrueOrFlalseChooseInv.openChooseInv(p, e.getCurrentItem(),e.getInventory(), "Would you like to stop the server?");
+						TrueOrFalseChooseInv.openChooseInv(p, e.getCurrentItem(),e.getInventory(), "Would you like to stop the server?");
 				}
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
