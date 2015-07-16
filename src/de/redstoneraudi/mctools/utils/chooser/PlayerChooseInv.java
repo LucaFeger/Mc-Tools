@@ -1,4 +1,4 @@
-package de.redstoneraudi.mctools.utils;
+package de.redstoneraudi.mctools.utils.chooser;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,6 +14,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.events.PlayerChooseEvent;
+import de.redstoneraudi.mctools.utils.LongMap;
 
 public class PlayerChooseInv implements Listener{
 
