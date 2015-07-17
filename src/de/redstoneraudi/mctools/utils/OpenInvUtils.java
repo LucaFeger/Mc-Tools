@@ -13,6 +13,7 @@ public class OpenInvUtils {
 	public static Inventory invTrollTool =Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lTroll-Items");	
 	public static Inventory invFunTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lFun-Tools");
 	public static Inventory invAdminTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lAdmin-Tools");
+	public static Inventory invServerAdminTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lServer-Tools");
 	
 	public static void openInvSelect(Player p) {
 		InventoryUtils.setItem(invSelect, 0, Material.BLAZE_ROD, "§6Fun-Tools", "§eYou can have Fun with our Fun-Tools!");
@@ -30,8 +31,15 @@ public class OpenInvUtils {
 	public static void openAdminInv(Player p){
 		InventoryUtils.setItem(invAdminTool, 0, Material.GOLDEN_APPLE, "§5Toggle OP", "§7Toggle Op by a Player");
 		InventoryUtils.setItem(invAdminTool, 1, Material.PISTON_BASE, "§cKick", "§7Kicks a player from the server!");
-		InventoryUtils.setItem(invAdminTool, 8, Material.BARRIER, "§4Close Server!", "§7Stop the server!");
+		InventoryUtils.setItem(invAdminTool, 8, Material.BEACON, "§5Server-Tools!", "§7Server-Tools!");
 		p.openInventory(invAdminTool);
+	}
+	
+	public static void openServerTools(Player p){
+		InventoryUtils.setItem(invServerAdminTool, 8, Material.BARRIER, "§4Close Server!", "§7Stop the server!");
+		InventoryUtils.setItem(invServerAdminTool, 0, Material.NAME_TAG, "§3Reload", "§7Reload the server!");
+		
+		p.openInventory(invServerAdminTool);
 	}
 	
 }

@@ -20,27 +20,34 @@ import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
 public class InventoryClickListener implements Listener {
 	
+	public static List<String> allowedInv = new ArrayList<String>();
 	public static List<String> freezedPlayers = new ArrayList<String>();
 	
 	private McTools plugin;
 	public InventoryClickListener(McTools plugin) {
 		this.plugin = plugin;
+		allowedInv.add("§3§lCategory");
+		allowedInv.add("§3§lTroll-Items");
+		allowedInv.add("§3§lAdmin-Tools");
+		allowedInv.add("§3§lServer-Tools");
 	}
 	
 	@EventHandler
 	public void onInvClick(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
-		if(e.getInventory().getName().equals("§3§lCategory") || e.getInventory().getName().equals("§3§lTroll-Items") || e.getInventory().getName().equals("§3§lAdmin-Tools")) {
+		if(allowedInv.contains(e.getInventory().getName())) {
 //------------------Opening the TrollTool Menu---------------------------			
 			try {
-				if(e.getCurrentItem().getType() == Material.LAVA_BUCKET) {
+				if(e.getCurrentItem().getType() == Material.LAVA_BUCKET && e.getClickedInventory().getName().equals("§3§lCategory")) {
 					OpenInvUtils.openTrollInv(p);
-				}else if(e.getCurrentItem().getType() == Material.BARRIER){
+				}else if(e.getCurrentItem().getType() == Material.BARRIER && e.getClickedInventory().getName().equals("§3§lCategory")){
 					if(p.hasPermission("mctools.inv.admin")){
 						OpenInvUtils.openAdminInv(p);
 					}else{
-						p.sendMessage(plugin.getPrefix() + "§cYou do not have permission for this.");
+						p.sendMessage(plugin.getNoPermMessage());
 					}
+				}else if(e.getCurrentItem().getType() == Material.BEACON && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){ /*Opens the Server-Tool Inv */
+					OpenInvUtils.openServerTools(p);
 				}
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
@@ -62,9 +69,13 @@ public class InventoryClickListener implements Listener {
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
 				}else 
-					if(e.getCurrentItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lAdmin-Tools")){
+					if(e.getCurrentItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lServer-Tools")){
 						TrueOrFalseChooseInv.openChooseInv(p, e.getCurrentItem(),e.getInventory(), "Would you like to stop the server?");
+				}else
+					if(e.getCurrentItem().getType() == Material.NAME_TAG && e.getInventory().getName().equals("§3§lServer-Tools")){
+						TrueOrFalseChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory(), "Would you like to reload the server?");
 				}
+				
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
 			}
@@ -102,14 +113,19 @@ public class InventoryClickListener implements Listener {
 	
 	@EventHandler
 	public void onTrueChoose(TrueOrFalseChooseEvent e){
-		if(e.getItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lAdmin-Tools")){
+		if(e.getItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lServer-Tools")){
 			if(e.isYes()){
 				for(Player tages : Bukkit.getOnlinePlayers()){
 					tages.kickPlayer(plugin.getPrefix() + "§cThe server was stopped by \n §5" + e.getPlayer().getName() + "§c!");
 				}
 				Bukkit.shutdown();
 			}
-		}
+		}else
+			if(e.getItem().getType() == Material.NAME_TAG && e.getInventory().getName().equals("§3§lServer-Tools")){
+				if(e.isYes()){
+					Bukkit.reload();
+					e.getPlayer().sendMessage(plugin.getPrefix() + "§aReload complete.");				}
+			}
 	}
 	
 }
