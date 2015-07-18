@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import de.redstoneraudi.mctools.events.TrueOrFalseChooseEvent;
-import de.redstoneraudi.mctools.utils.ItemBuilder;
-import de.redstoneraudi.mctools.utils.LongMap;
+import de.redstoneraudi.mctools.other.ItemBuilder;
+import de.redstoneraudi.mctools.other.LongMap;
 
 public class TrueOrFalseChooseInv implements Listener{
 

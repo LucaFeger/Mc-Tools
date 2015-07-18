@@ -13,6 +13,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.events.PlayerChooseEvent;
 import de.redstoneraudi.mctools.events.TrueOrFalseChooseEvent;
+import de.redstoneraudi.mctools.utils.DropItems;
+import de.redstoneraudi.mctools.utils.GiveBadApple;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
 import de.redstoneraudi.mctools.utils.TrollRocket;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
@@ -74,7 +76,15 @@ public class InventoryClickListener implements Listener {
 				}else
 					if(e.getCurrentItem().getType() == Material.NAME_TAG && e.getInventory().getName().equals("§3§lServer-Tools")){
 						TrueOrFalseChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory(), "Would you like to reload the server?");
-				}
+				}else
+					if(e.getCurrentItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lTroll-Items")){
+						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
+				}else
+					if(e.getCurrentItem().getType() == Material.DISPENSER && e.getInventory().getName().equals("§3§lTroll-Items")){
+						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
+					}
 				
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
@@ -96,7 +106,13 @@ public class InventoryClickListener implements Listener {
 				} else {
 					freezedPlayers.add(e.getTarget().getName());
 				}
-			}
+		}else 
+			if(e.getItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lTroll-Items")){
+				GiveBadApple.giveBadApple(e.getTarget());
+		}else
+			if(e.getItem().getType() == Material.DISPENSER && e.getInventory().getName().equals("§3§lTroll-Items")){
+				DropItems.dropItems(e.getTarget());
+		}
 	}
 	
 	//Admin-Actions
@@ -124,7 +140,8 @@ public class InventoryClickListener implements Listener {
 			if(e.getItem().getType() == Material.NAME_TAG && e.getInventory().getName().equals("§3§lServer-Tools")){
 				if(e.isYes()){
 					Bukkit.reload();
-					e.getPlayer().sendMessage(plugin.getPrefix() + "§aReload complete.");				}
+					e.getPlayer().sendMessage(plugin.getPrefix() + "§aReload complete.");				
+				}
 			}
 	}
 	

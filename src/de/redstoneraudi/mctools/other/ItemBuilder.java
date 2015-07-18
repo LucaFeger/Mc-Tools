@@ -1,4 +1,4 @@
-package de.redstoneraudi.mctools.utils;
+package de.redstoneraudi.mctools.other;
 
 import java.util.Arrays;
 

@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.events.PlayerChooseEvent;
-import de.redstoneraudi.mctools.utils.LongMap;
+import de.redstoneraudi.mctools.other.LongMap;
 
 public class PlayerChooseInv implements Listener{
 

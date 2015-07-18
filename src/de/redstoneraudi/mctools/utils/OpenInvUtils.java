@@ -25,6 +25,8 @@ public class OpenInvUtils {
 	public static void openTrollInv(Player p) {
 		InventoryUtils.setItem(invTrollTool, 0, Material.ICE, "§5Dance", "§7The Player is 'Dancing' :D!");
 		InventoryUtils.setItem(invTrollTool, 1, Material.FIREWORK, "§5Rocket", "§7Hurls a Player in the air!");
+		InventoryUtils.setItem(invTrollTool, 2, Material.GOLDEN_APPLE, "§5BadApple ", "§7Add an apple to someones inventory,", "§7which will kill him if he eats it");
+		InventoryUtils.setItem(invTrollTool, 3, Material.DISPENSER, "§5DropInv ", "§7Drops every item in the players inventory");
 		p.openInventory(invTrollTool);
 	}
 
