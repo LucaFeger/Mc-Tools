@@ -42,10 +42,6 @@ public class DropFakeDiamonds {
 		return locs;
 	}
 	
-	public static void giveBadApple(){
-		
-	}
-	
 	public static boolean isExplosive(ItemStack is){
 		NBTHelper helper = new NBTHelper(is);
 		Boolean isExplosive = helper.getBoolean("isExplosive");

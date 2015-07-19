@@ -16,6 +16,7 @@ import de.redstoneraudi.mctools.events.TrueOrFalseChooseEvent;
 import de.redstoneraudi.mctools.utils.DropFakeDiamonds;
 import de.redstoneraudi.mctools.utils.DropItems;
 import de.redstoneraudi.mctools.utils.GiveBadApple;
+import de.redstoneraudi.mctools.utils.PigCannon;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
 import de.redstoneraudi.mctools.utils.TrollRocket;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
@@ -34,6 +35,7 @@ public class InventoryClickListener implements Listener {
 		allowedInv.add("§3§lAdmin-Tools");
 		allowedInv.add("§3§lServer-Tools");
 		allowedInv.add("§3§lPlayer-Options");
+		allowedInv.add("§3§lFun-Tools");
 	}
 	
 	@EventHandler
@@ -50,6 +52,8 @@ public class InventoryClickListener implements Listener {
 					}else{
 						p.sendMessage(plugin.getNoPermMessage());
 					}
+				}else if(e.getCurrentItem().getType() == Material.BLAZE_ROD && e.getClickedInventory().getName().equals("§3§lCategory")){
+					OpenInvUtils.openFunInv(p);
 				}else if(e.getCurrentItem().getType() == Material.BEACON && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){ /*Opens the Server-Tool Inv */
 					OpenInvUtils.openServerTools(p);
 				}else if(e.getCurrentItem().getType() == Material.SKULL_ITEM && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){
@@ -96,6 +100,10 @@ public class InventoryClickListener implements Listener {
 					if(e.getCurrentItem().getType() == Material.DIAMOND && e.getInventory().getName().equals("§3§lTroll-Items")){
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());		
+				}else
+					if(e.getCurrentItem().getType() == Material.GOLD_HOE && e.getInventory().getName().equals("§3§lFun-Tools")){
+						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
 				}
 				
 			} catch(NullPointerException ex) {
@@ -127,6 +135,14 @@ public class InventoryClickListener implements Listener {
 		}else
 			if(e.getItem().getType() == Material.DIAMOND && e.getInventory().getName().equals("§3§lTroll-Items")){
 				DropFakeDiamonds.dropDiamonds(e.getTarget().getLocation(), 8, 8);
+		}
+	}
+	
+	//Fun-Actions
+	@EventHandler
+	public void onChooseFunItems(PlayerChooseEvent e){
+		if(e.getItem().getType() == Material.GOLD_HOE && e.getInventory().getName().equals("§3§lFun-Tools")){
+			PigCannon.givePigCannon(e.getTarget());
 		}
 	}
 	

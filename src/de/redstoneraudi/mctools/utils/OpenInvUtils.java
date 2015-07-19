@@ -23,6 +23,12 @@ public class OpenInvUtils {
 		p.openInventory(invSelect);
 	}
 	
+	public static void openFunInv(Player p){
+		InventoryUtils.setItem(invFunTool, 0, Material.GOLD_HOE, "§5PigCannon", "§7Give the Player a cannon!");
+		
+		p.openInventory(invFunTool);
+	}
+	
 	public static void openTrollInv(Player p) {
 		InventoryUtils.setItem(invTrollTool, 0, Material.ICE, "§5Dance", "§7The Player is 'Dancing' :D!");
 		InventoryUtils.setItem(invTrollTool, 1, Material.FIREWORK, "§5Rocket", "§7Hurls a Player in the air!");
