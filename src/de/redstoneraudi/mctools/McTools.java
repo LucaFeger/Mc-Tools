@@ -8,6 +8,7 @@ import de.redstoneraudi.mctools.cmd.CommandTools;
 import de.redstoneraudi.mctools.listeners.EatListener;
 import de.redstoneraudi.mctools.listeners.InventoryClickListener;
 import de.redstoneraudi.mctools.listeners.MoveEvent;
+import de.redstoneraudi.mctools.listeners.PickUpItemEvent;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
@@ -43,7 +44,8 @@ public class McTools extends JavaPlugin {
 		pm.registerEvents(new PlayerChooseInv(this), this);
 		pm.registerEvents(new TrueOrFalseChooseInv(), this);
 		pm.registerEvents(new MoveEvent(this), this);
-		pm.registerEvents(new EatListener(this), this);	
+		pm.registerEvents(new EatListener(this), this);
+		pm.registerEvents(new PickUpItemEvent(), this);
 	}
 	
 	public void registerCommands() {

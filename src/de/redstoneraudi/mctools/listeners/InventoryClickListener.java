@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.events.PlayerChooseEvent;
 import de.redstoneraudi.mctools.events.TrueOrFalseChooseEvent;
+import de.redstoneraudi.mctools.utils.DropFakeDiamonds;
 import de.redstoneraudi.mctools.utils.DropItems;
 import de.redstoneraudi.mctools.utils.GiveBadApple;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
@@ -91,6 +92,10 @@ public class InventoryClickListener implements Listener {
 					if(e.getCurrentItem().getType() == Material.DISPENSER && e.getInventory().getName().equals("§3§lTroll-Items")){
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
+				}else
+					if(e.getCurrentItem().getType() == Material.DIAMOND && e.getInventory().getName().equals("§3§lTroll-Items")){
+						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());		
 				}
 				
 			} catch(NullPointerException ex) {
@@ -119,6 +124,9 @@ public class InventoryClickListener implements Listener {
 		}else
 			if(e.getItem().getType() == Material.DISPENSER && e.getInventory().getName().equals("§3§lTroll-Items")){
 				DropItems.dropItems(e.getTarget());
+		}else
+			if(e.getItem().getType() == Material.DIAMOND && e.getInventory().getName().equals("§3§lTroll-Items")){
+				DropFakeDiamonds.dropDiamonds(e.getTarget().getLocation(), 8, 8);
 		}
 	}
 	
