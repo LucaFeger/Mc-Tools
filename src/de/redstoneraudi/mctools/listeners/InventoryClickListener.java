@@ -32,6 +32,7 @@ public class InventoryClickListener implements Listener {
 		allowedInv.add("§3§lTroll-Items");
 		allowedInv.add("§3§lAdmin-Tools");
 		allowedInv.add("§3§lServer-Tools");
+		allowedInv.add("§3§lPlayer-Options");
 	}
 	
 	@EventHandler
@@ -50,6 +51,8 @@ public class InventoryClickListener implements Listener {
 					}
 				}else if(e.getCurrentItem().getType() == Material.BEACON && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){ /*Opens the Server-Tool Inv */
 					OpenInvUtils.openServerTools(p);
+				}else if(e.getCurrentItem().getType() == Material.SKULL_ITEM && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){
+					OpenInvUtils.openPlayerOptions(p);
 				}
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
@@ -63,13 +66,17 @@ public class InventoryClickListener implements Listener {
 					p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 					PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
 				}else 
-					if(e.getCurrentItem().getType() == Material.PISTON_BASE && e.getInventory().getName().equals("§3§lAdmin-Tools")){
+					if(e.getCurrentItem().getType() == Material.PISTON_BASE && e.getInventory().getName().equals("§3§lPlayer-Options")){
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
 				}else 
-					if(e.getCurrentItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lAdmin-Tools")){
+					if(e.getCurrentItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lPlayer-Options")){
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
+				}else
+					if(e.getCurrentItem().getType() == Material.CHEST && e.getInventory().getName().equals("§3§lPlayer-Options")){
+						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
 				}else 
 					if(e.getCurrentItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lServer-Tools")){
 						TrueOrFalseChooseInv.openChooseInv(p, e.getCurrentItem(),e.getInventory(), "Would you like to stop the server?");
@@ -84,7 +91,7 @@ public class InventoryClickListener implements Listener {
 					if(e.getCurrentItem().getType() == Material.DISPENSER && e.getInventory().getName().equals("§3§lTroll-Items")){
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
-					}
+				}
 				
 			} catch(NullPointerException ex) {
 				System.out.println(ex);
@@ -117,12 +124,19 @@ public class InventoryClickListener implements Listener {
 	
 	//Admin-Actions
 	@EventHandler
-	public void onChooseAdmin(PlayerChooseEvent e){
-			if(e.getItem().getType() == Material.PISTON_BASE && e.getInventory().getName().equals("§3§lAdmin-Tools")){
+	public void onChoosePlayerOptions(PlayerChooseEvent e){
+			if(e.getItem().getType() == Material.PISTON_BASE && e.getInventory().getName().equals("§3§lPlayer-Options")){
 			e.getTarget().kickPlayer(plugin.getPrefix() + "§cYou was kickt from the server! \n\n by §5" + e.getPlayer().getName());
 		}else 
-			if(e.getItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lAdmin-Tools")){
+			if(e.getItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lPlayer-Options")){
 				e.getTarget().setOp(!e.getTarget().isOp());
+		}else
+			if(e.getItem().getType() == Material.CHEST && e.getInventory().getName().equals("§3§lPlayer-Options")){
+				if(e.getTarget() == e.getPlayer()) {
+					e.getPlayer().sendMessage(plugin.getPrefix() + "§cYou can not look into your own inventory!");
+					return;
+				}
+					e.getPlayer().openInventory(e.getTarget().getInventory());
 		}
 	}
 	
