@@ -1,0 +1,23 @@
+Category:
+  - Fun-Tools um ins Fun-Tools Inventory zu gelagen.
+  - Troll-Tools um ins Troll-Items Inventory zu gelagen.
+  - Admin-Tools um ins Admin-Tools Inventory zu gelagen.
+
+Fun-Tools:
+  - PigCannon, um Schweine zu schießen.
+
+Troll-Items:
+  - Dance, um den Player tanzen zu lassen :D
+  - Rocket, um den Player in die Luft fliegen zu lassen.
+  - BadApple, um den Player einen GoldenApfel in das Inventar legen zu lassen der den Player tötet wenn er von den Player gegessen wird :D
+  - FakeDiamond, es werden um den Player Diamonds gespawnt, die Explodieren wenn der Player sie aufhebt. Es werden 8 gedropt, wenn der Player einen aufhebt werden die anderen gelöscht.
+  - DropInv, es wird das Inventar vom Player gedropt außer die Rüstung.
+
+Admin-Tolls:
+  - Player-Tools!: 
+    - Toggle  OP, um den Player Op zu geben (wenn er es noch nicht hat) oder es wieder zu entfernen (wenn er es hat)
+    - Kick, um den Player von Server zu kicken.
+    - InvSee ,um in das Inventar des Players zu gucken.
+  - Server-Tools!:
+    - Reload, um den Server zu reloaden
+    - Close Server um den Server zu stoppen.

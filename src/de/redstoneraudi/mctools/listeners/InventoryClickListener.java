@@ -16,8 +16,8 @@ import de.redstoneraudi.mctools.events.TrueOrFalseChooseEvent;
 import de.redstoneraudi.mctools.utils.DropFakeDiamonds;
 import de.redstoneraudi.mctools.utils.DropItems;
 import de.redstoneraudi.mctools.utils.GiveBadApple;
-import de.redstoneraudi.mctools.utils.PigCannon;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
+import de.redstoneraudi.mctools.utils.PigCannon;
 import de.redstoneraudi.mctools.utils.TrollRocket;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
@@ -60,7 +60,7 @@ public class InventoryClickListener implements Listener {
 					OpenInvUtils.openPlayerOptions(p);
 				}
 			} catch(NullPointerException ex) {
-				System.out.println(ex);
+//				System.out.println(ex);
 			}
 //------------------Activate Freezer---------------------------	
 			try {
@@ -107,7 +107,7 @@ public class InventoryClickListener implements Listener {
 				}
 				
 			} catch(NullPointerException ex) {
-				System.out.println(ex);
+//				System.out.println(ex);
 			}
 			
 		e.setCancelled(true);
