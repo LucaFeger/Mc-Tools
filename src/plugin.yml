@@ -1,6 +1,6 @@
 name: McTools
 version: 1.0
-author: [RedstoneRaudi, Aquaatic, GalaxyHD]
+author: [RedstoneRaudi, GalaxyHD, Aquaatic]
 main: de.redstoneraudi.mctools.McTools
 
 commands:
