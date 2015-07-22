@@ -9,17 +9,20 @@ import org.bukkit.inventory.Inventory;
 
 public class OpenInvUtils {
 
-	public static Inventory invSelect = Bukkit.createInventory(null, InventoryType.HOPPER, "§3§lCategory");
+	public static Inventory invSelect = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lCategory");
 	public static Inventory invTrollTool =Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lTroll-Items");	
 	public static Inventory invFunTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lFun-Tools");
 	public static Inventory invAdminTool = Bukkit.createInventory(null, InventoryType.HOPPER, "§3§lAdmin-Tools");
 	public static Inventory invServerAdminTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lServer-Tools");
 	public static Inventory invPlayerAdminTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lPlayer-Options");
+	public static Inventory invWorldAdminTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lWorld-Options");
+	public static Inventory invPracticalTool = Bukkit.createInventory(null, InventoryType.DISPENSER, "§3§lPractical");
 	
 	public static void openInvSelect(Player p) {
 		InventoryUtils.setItem(invSelect, 0, Material.BLAZE_ROD, "§6Fun-Tools", "§eYou can have Fun with our Fun-Tools!");
 		InventoryUtils.setItem(invSelect, 2, Material.LAVA_BUCKET, "§6Troll-Tools", "§eYou can troll other Players!");
 		InventoryUtils.setItem(invSelect, 4, Material.BARRIER, "§6Admin-Tools", "§4ONLY FOR ADMINS!");
+		InventoryUtils.setItem(invSelect, 6, Material.LEATHER_BOOTS, "§6Practical", "§ePractical matters");
 		p.openInventory(invSelect);
 	}
 	
@@ -41,6 +44,7 @@ public class OpenInvUtils {
 	public static void openAdminInv(Player p){
 		InventoryUtils.setItem(invAdminTool, 0, Material.SKULL_ITEM, "§3Player-Tools!", "§7Player-Options");
 		InventoryUtils.setItem(invAdminTool, 2, Material.BEACON, "§5Server-Tools!", "§7Server-Tools!");
+		InventoryUtils.setItem(invAdminTool, 4, Material.GRASS, "§5World-Options", "§7World-Options!");
 		
 		p.openInventory(invAdminTool);
 	}
@@ -58,6 +62,18 @@ public class OpenInvUtils {
 		InventoryUtils.setItem(invServerAdminTool, 0, Material.NAME_TAG, "§3Reload", "§7Reload the server!");
 		
 		p.openInventory(invServerAdminTool);
+	}
+	
+	public static void openWorldOptions(Player p){
+		InventoryUtils.setItem(invWorldAdminTool, 0, Material.DOUBLE_PLANT, "§eSun!", "§6Set the weather to sun!");
+		
+		p.openInventory(invWorldAdminTool);
+	}
+	
+	public static void openPracticalTool(Player p){
+		
+		
+		p.openInventory(invPracticalTool);
 	}
 	
 }

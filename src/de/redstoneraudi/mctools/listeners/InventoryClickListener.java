@@ -24,31 +24,34 @@ import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
 public class InventoryClickListener implements Listener {
 	
-	public static List<String> allowedInv = new ArrayList<String>();
 	public static List<String> freezedPlayers = new ArrayList<String>();
 	
 	private McTools plugin;
 	public InventoryClickListener(McTools plugin) {
 		this.plugin = plugin;
-		allowedInv.add("§3§lCategory");
-		allowedInv.add("§3§lTroll-Items");
-		allowedInv.add("§3§lAdmin-Tools");
-		allowedInv.add("§3§lServer-Tools");
-		allowedInv.add("§3§lPlayer-Options");
-		allowedInv.add("§3§lFun-Tools");
 	}
 	
 	@EventHandler
 	public void onInvClick(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
-		if(allowedInv.contains(e.getInventory().getName())) {
+		if(McTools.allowedInv.contains(e.getInventory().getName())) {
 //------------------Opening the TrollTool Menu---------------------------			
 			try {
 				if(e.getCurrentItem().getType() == Material.LAVA_BUCKET && e.getClickedInventory().getName().equals("§3§lCategory")) {
-					OpenInvUtils.openTrollInv(p);
+					if(p.hasPermission("mctools.inv.troll")){
+						OpenInvUtils.openTrollInv(p);
+					}else{
+						p.sendMessage(plugin.getNoPermMessage());
+					}
 				}else if(e.getCurrentItem().getType() == Material.BARRIER && e.getClickedInventory().getName().equals("§3§lCategory")){
 					if(p.hasPermission("mctools.inv.admin")){
 						OpenInvUtils.openAdminInv(p);
+					}else{
+						p.sendMessage(plugin.getNoPermMessage());
+					}
+				}else if(e.getCurrentItem().getType() == Material.LEATHER_BOOTS && e.getClickedInventory().getName().equals("§3§lCategory")){
+					if(p.hasPermission("mctools.inv.practical")){
+						OpenInvUtils.openPracticalTool(p);
 					}else{
 						p.sendMessage(plugin.getNoPermMessage());
 					}
@@ -58,6 +61,8 @@ public class InventoryClickListener implements Listener {
 					OpenInvUtils.openServerTools(p);
 				}else if(e.getCurrentItem().getType() == Material.SKULL_ITEM && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){
 					OpenInvUtils.openPlayerOptions(p);
+				}else if(e.getCurrentItem().getType() == Material.GRASS && e.getClickedInventory().getName().equals("§3§lAdmin-Tools")){
+					OpenInvUtils.openWorldOptions(p);
 				}
 			} catch(NullPointerException ex) {
 //				System.out.println(ex);
