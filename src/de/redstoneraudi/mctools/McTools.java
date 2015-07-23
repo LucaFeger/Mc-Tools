@@ -8,6 +8,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.redstoneraudi.mctools.cmd.CommandTools;
+import de.redstoneraudi.mctools.cmd.PlayerInfo;
 import de.redstoneraudi.mctools.listeners.EatListener;
 import de.redstoneraudi.mctools.listeners.InventoryClickListener;
 import de.redstoneraudi.mctools.listeners.MoveEvent;
@@ -67,9 +68,13 @@ public class McTools extends JavaPlugin {
 		pm.registerEvents(new PlayerInteractListener(), this);
 		pm.registerEvents(new WorldOptionsListener(this), this);
 		pm.registerEvents(new PlayerOptionsListener(this), this);
+		
+		pm.registerEvents(new PlayerInfo(this), this);
+		
 	}
 	
 	public void registerCommands() {
 		getCommand("mctools").setExecutor(new CommandTools(this));
+		getCommand("playerinfo").setExecutor(new PlayerInfo(this));
 	}
 }
