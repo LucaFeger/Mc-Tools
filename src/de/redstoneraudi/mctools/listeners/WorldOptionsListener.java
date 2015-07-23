@@ -21,7 +21,7 @@ public class WorldOptionsListener implements Listener{
 	public void onClick(InventoryClickEvent e){
 		Player p = (Player) e.getWhoClicked();
 		try{
-			if(McTools.allowedInv.contains(e.getInventory().getName())) {
+			if(plugin.allowedInv.contains(e.getInventory().getName())) {
 				if(e.getInventory().getName().equals("§3§lWorld-Options")){
 					if(e.getCurrentItem().getType() == Material.DOUBLE_PLANT){
 						p.getWorld().setStorm(false);

@@ -52,7 +52,8 @@ public class OpenInvUtils {
 	public static void openPlayerOptions(Player p){
 		InventoryUtils.setItem(invPlayerAdminTool, 0, Material.GOLDEN_APPLE, "§5Toggle OP", "§7Toggle Op by a Player");
 		InventoryUtils.setItem(invPlayerAdminTool, 1, Material.PISTON_BASE, "§cKick", "§7Kicks a player from the server!");
-		InventoryUtils.setItem(invPlayerAdminTool, 2, Material.CHEST, "§5InvSee", "§7See the Inventory of the Player!");
+		InventoryUtils.setItem(invPlayerAdminTool, 2, Material.BARRIER, "§4Ban!", "§7Ban a player from the server!");
+		InventoryUtils.setItem(invPlayerAdminTool, 3, Material.CHEST, "§5InvSee", "§7See the Inventory of the Player!");
 		
 		p.openInventory(invPlayerAdminTool);
 	}

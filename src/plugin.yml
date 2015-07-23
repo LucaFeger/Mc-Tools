@@ -3,6 +3,8 @@ version: 1.0
 author: [RedstoneRaudi, GalaxyHD, Aquaatic]
 main: de.redstoneraudi.mctools.McTools
 
+softdepend: [BanPlugin]
+
 commands:
   mctools:
     aliases: [tools, mc-tools]

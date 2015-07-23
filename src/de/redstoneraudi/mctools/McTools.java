@@ -13,6 +13,7 @@ import de.redstoneraudi.mctools.listeners.InventoryClickListener;
 import de.redstoneraudi.mctools.listeners.MoveEvent;
 import de.redstoneraudi.mctools.listeners.PickUpItemEvent;
 import de.redstoneraudi.mctools.listeners.PlayerInteractListener;
+import de.redstoneraudi.mctools.listeners.PlayerOptionsListener;
 import de.redstoneraudi.mctools.listeners.WorldOptionsListener;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
@@ -23,7 +24,7 @@ public class McTools extends JavaPlugin {
 	private final String noPerm = prefix + "§4You don't have Permission to do that!";
 	private final String failCommand = prefix + "§4Wrong Arguments: /mctools";
 	
-	public static List<String> allowedInv = new ArrayList<String>();
+	public List<String> allowedInv = new ArrayList<String>();
 	
 	@Override
 	public void onEnable() {
@@ -65,6 +66,7 @@ public class McTools extends JavaPlugin {
 		pm.registerEvents(new PickUpItemEvent(), this);
 		pm.registerEvents(new PlayerInteractListener(), this);
 		pm.registerEvents(new WorldOptionsListener(this), this);
+		pm.registerEvents(new PlayerOptionsListener(this), this);
 	}
 	
 	public void registerCommands() {
