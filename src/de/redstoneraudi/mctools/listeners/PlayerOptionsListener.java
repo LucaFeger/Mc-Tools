@@ -1,12 +1,15 @@
 package de.redstoneraudi.mctools.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.events.PlayerChooseEvent;
+import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 
 public class PlayerOptionsListener implements Listener{
 
@@ -18,11 +21,26 @@ public class PlayerOptionsListener implements Listener{
 	
 	@EventHandler
 	public void onClick(InventoryClickEvent e){
-//		Player p = (Player) e.getWhoClicked();
+		Player p = (Player) e.getWhoClicked();
 		try{
 			if(plugin.allowedInv.contains(e.getInventory().getName())) {
 				if(e.getInventory().getName().equals("§3§lPlayer-Options")){
-					
+						if(e.getCurrentItem().getType() == Material.PISTON_BASE){
+							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
+					}else 
+						if(e.getCurrentItem().getType() == Material.GOLDEN_APPLE){
+							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
+					}else
+						if(e.getCurrentItem().getType() == Material.CHEST){
+							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
+					}else 
+						if(e.getCurrentItem().getType() == Material.SIGN){
+							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
+					}
 				}
 				e.setCancelled(true);
 			}
@@ -42,7 +60,10 @@ public class PlayerOptionsListener implements Listener{
 					e.getPlayer().sendMessage(plugin.getPrefix() + "§cYou can not look into your own inventory!");
 					return;
 				}
-					e.getPlayer().openInventory(e.getTarget().getInventory());
+				e.getPlayer().openInventory(e.getTarget().getInventory());
+		}else
+			if(e.getItem().getType() == Material.SIGN && e.getInventory().getName().equals("§3§lPlayer-Options")){
+				Bukkit.dispatchCommand(e.getPlayer(), "playerinfo " + e.getTarget().getName());
 		}
 	}
 	

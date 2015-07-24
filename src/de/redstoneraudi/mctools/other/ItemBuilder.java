@@ -2,13 +2,9 @@ package de.redstoneraudi.mctools.other;
 
 import java.util.Arrays;
 
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
-import net.minecraft.server.v1_8_R3.NBTTagList;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,7 +15,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 public class ItemBuilder {
 
 	/**
-	 * EXAMPLE: ItemBuilder.material(Material.APPLE, 32).setDisplayName("§cRoter Apfel").setLore("Das ist ein wunder", "schöner Roter Apfel").addGlow().build()
+	 * EXAMPLE: ItemBuilder.material(Material.APPLE, 32).setDisplayName("§cRoter Apfel").setLore("Das ist ein wunder", "schöner Roter Apfel").build()
 	 */
 
 	private ItemStack item;
@@ -123,53 +119,6 @@ public class ItemBuilder {
 
 	public static boolean hasThisName(ItemStack is, String displayname){
 		return hasThisName(is, displayname, true);
-	}
-	
-	/**
-	 * Enchantment Glow Effect
-	 */
-	public ItemBuilder addGlow() {
-		net.minecraft.server.v1_8_R3.ItemStack nmsStack = CraftItemStack
-				.asNMSCopy(item);
-		NBTTagCompound tag = null;
-
-		if (!nmsStack.hasTag()) {
-			tag = new NBTTagCompound();
-			nmsStack.setTag(tag);
-		}
-
-		if (tag == null)
-			tag = nmsStack.getTag();
-
-		NBTTagList ench = new NBTTagList();
-		tag.set("ench", ench);
-		nmsStack.setTag(tag);
-
-		item = CraftItemStack.asBukkitCopy(nmsStack);
-		return this;
-	}
-
-	/**
-	 * Remove Enchantment Glow Effect
-	 */
-	public ItemBuilder removeGlow() {
-		net.minecraft.server.v1_8_R3.ItemStack nmsStack = CraftItemStack
-				.asNMSCopy(item);
-		NBTTagCompound tag = null;
-
-		if (!nmsStack.hasTag()) {
-			tag = new NBTTagCompound();
-			nmsStack.setTag(tag);
-		}
-
-		if (tag == null)
-			tag = nmsStack.getTag();
-
-		tag.remove("ench");
-		nmsStack.setTag(tag);
-
-		item = CraftItemStack.asBukkitCopy(nmsStack);
-		return this;
 	}
 	
 	/**

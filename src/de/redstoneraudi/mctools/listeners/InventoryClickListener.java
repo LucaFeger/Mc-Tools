@@ -76,18 +76,6 @@ public class InventoryClickListener implements Listener {
 					p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 					PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
 				}else 
-					if(e.getCurrentItem().getType() == Material.PISTON_BASE && e.getInventory().getName().equals("§3§lPlayer-Options")){
-						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
-				}else 
-					if(e.getCurrentItem().getType() == Material.GOLDEN_APPLE && e.getInventory().getName().equals("§3§lPlayer-Options")){
-						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
-				}else
-					if(e.getCurrentItem().getType() == Material.CHEST && e.getInventory().getName().equals("§3§lPlayer-Options")){
-						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-						PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
-				}else 
 					if(e.getCurrentItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lServer-Tools")){
 						TrueOrFalseChooseInv.openChooseInv(p, e.getCurrentItem(),e.getInventory(), "Would you like to stop the server?");
 				}else
