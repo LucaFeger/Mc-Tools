@@ -15,7 +15,9 @@ import de.redstoneraudi.mctools.listeners.MoveEvent;
 import de.redstoneraudi.mctools.listeners.PickUpItemEvent;
 import de.redstoneraudi.mctools.listeners.PlayerInteractListener;
 import de.redstoneraudi.mctools.listeners.PlayerOptionsListener;
+import de.redstoneraudi.mctools.listeners.PracticalListener;
 import de.redstoneraudi.mctools.listeners.WorldOptionsListener;
+import de.redstoneraudi.mctools.utils.Practical;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
@@ -34,15 +36,13 @@ public class McTools extends JavaPlugin {
 		registerEvents();
 		registerCommands();
 		
-		allowedInv.add("§3§lCategory");
-		allowedInv.add("§3§lTroll-Items");
-		allowedInv.add("§3§lAdmin-Tools");
-		allowedInv.add("§3§lServer-Tools");
-		allowedInv.add("§3§lPlayer-Options");
-		allowedInv.add("§3§lFun-Tools");
-		allowedInv.add("§3§lWorld-Options");
-		allowedInv.add("§3§lPractical");
+		setAllowedInvs();
 		
+	}
+	
+	@Override
+	public void onDisable() {
+		Practical.disable();
 	}
 
 	public String getNoPermMessage() {
@@ -68,6 +68,7 @@ public class McTools extends JavaPlugin {
 		pm.registerEvents(new PlayerInteractListener(), this);
 		pm.registerEvents(new WorldOptionsListener(this), this);
 		pm.registerEvents(new PlayerOptionsListener(this), this);
+		pm.registerEvents(new PracticalListener(this), this);
 		
 		pm.registerEvents(new PlayerInfo(this), this);
 		
@@ -76,5 +77,16 @@ public class McTools extends JavaPlugin {
 	public void registerCommands() {
 		getCommand("mctools").setExecutor(new CommandTools(this));
 		getCommand("playerinfo").setExecutor(new PlayerInfo(this));
+	}
+	
+	private void setAllowedInvs(){
+		allowedInv.add("§3§lCategory");
+		allowedInv.add("§3§lTroll-Items");
+		allowedInv.add("§3§lAdmin-Tools");
+		allowedInv.add("§3§lServer-Tools");
+		allowedInv.add("§3§lPlayer-Options");
+		allowedInv.add("§3§lFun-Tools");
+		allowedInv.add("§3§lWorld-Options");
+		allowedInv.add("§3§lPractical");
 	}
 }

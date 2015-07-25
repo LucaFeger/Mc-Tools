@@ -72,7 +72,9 @@ public class OpenInvUtils {
 	}
 	
 	public static void openPracticalTool(Player p){
-		
+		InventoryUtils.setItem(invPracticalTool, 0, Material.GHAST_TEAR, "§3Vanish", "§7Toggle Vanish from you");
+		InventoryUtils.setItem(invPracticalTool, 1, Material.FEATHER, "§3Fly", "§7Toggle Fly from you");
+		InventoryUtils.setItem(invPracticalTool, 2, Material.WOOD_AXE, "§3WorldEdit-Axe", "§7Give you the WordEdit Axe!");
 		
 		p.openInventory(invPracticalTool);
 	}
