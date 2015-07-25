@@ -42,4 +42,14 @@ public class Practical {
 		}
 	}
 	
+	public static boolean toggleCreativeEnderPearl(Player p){
+		if(Global.enderpearlTogglePlayer.contains(p.getName())){
+			Global.enderpearlTogglePlayer.remove(p.getName());
+			return false;
+		}else{
+			Global.enderpearlTogglePlayer.add(p.getName());
+			return true;
+		}
+	}
+	
 }

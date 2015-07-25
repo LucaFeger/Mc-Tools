@@ -33,6 +33,7 @@ public class McTools extends JavaPlugin {
 	public void onEnable() {
 		Bukkit.getConsoleSender().sendMessage(prefix + "§9Plugin §4" + getDescription().getName() + " §9by §4" 
 		+ getDescription().getAuthors() + " §9enabled!");
+		
 		registerEvents();
 		registerCommands();
 		
