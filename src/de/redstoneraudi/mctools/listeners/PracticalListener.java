@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import de.redstoneraudi.mctools.Global;
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.other.ItemBuilder;
+import de.redstoneraudi.mctools.utils.ArmorInventory;
 import de.redstoneraudi.mctools.utils.Practical;
 
 public class PracticalListener implements Listener {
@@ -53,6 +54,9 @@ public class PracticalListener implements Listener {
 								p.sendMessage(plugin.getPrefix() + "§cYou can not use the EnderPearl in Creative now");
 							}
 							p.closeInventory();
+					}else 
+						if(is.getType() == Material.LEATHER_BOOTS){
+						ArmorInventory.OpenArmorInventory(p);
 					}
 				}
 			}

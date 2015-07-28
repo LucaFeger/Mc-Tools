@@ -76,6 +76,7 @@ public class OpenInvUtils {
 		InventoryUtils.setItem(invPracticalTool, 1, Material.FEATHER, "§3Fly", "§7Toggle Fly from you");
 		InventoryUtils.setItem(invPracticalTool, 2, Material.WOOD_AXE, "§3WorldEdit-Axe", "§7Give you the WordEdit Axe!");
 		InventoryUtils.setItem(invPracticalTool, 3, Material.ENDER_PEARL, "§3Creative EnderPearl", "§7You can use the Ender Pearl in Creative Mode!");
+		InventoryUtils.setItem(invPracticalTool, 4, Material.LEATHER_BOOTS, "§3Armor", "§7Opens an inventory with armor");
 		
 		p.openInventory(invPracticalTool);
 	}
