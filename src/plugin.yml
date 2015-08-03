@@ -1,10 +1,4 @@
 name: McTools
 version: 1.0
-author: [RedstoneRaudi, GalaxyHD, Aquaatic]
+author: [RedstoneRaudi, GalaxyHD, Aquaatic, TomS]
 main: de.redstoneraudi.mctools.McTools
-
-commands:
-  mctools:
-    aliases: [tools, mc-tools]
-  playerinfo:
-    aliases: [pi]

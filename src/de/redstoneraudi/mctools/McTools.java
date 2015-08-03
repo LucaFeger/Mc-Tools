@@ -21,6 +21,7 @@ import de.redstoneraudi.mctools.utils.ArmorInventory;
 import de.redstoneraudi.mctools.utils.Practical;
 import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
+import de.redstoneraudi.mctools.utils.RegisterUtil;
 
 public class McTools extends JavaPlugin {
 	
@@ -60,26 +61,28 @@ public class McTools extends JavaPlugin {
 	}
 	
 	public void registerEvents() {
-		PluginManager pm = Bukkit.getPluginManager();
-		pm.registerEvents(new InventoryClickListener(this), this);
-		pm.registerEvents(new PlayerChooseInv(this), this);
-		pm.registerEvents(new TrueOrFalseChooseInv(), this);
-		pm.registerEvents(new MoveEvent(this), this);
-		pm.registerEvents(new EatListener(this), this);
-		pm.registerEvents(new PickUpItemEvent(), this);
-		pm.registerEvents(new PlayerInteractListener(), this);
-		pm.registerEvents(new WorldOptionsListener(this), this);
-		pm.registerEvents(new PlayerOptionsListener(this), this);
-		pm.registerEvents(new PracticalListener(this), this);
-		pm.registerEvents(new ArmorInventory(), this);
+		RegisterUtil<Main> register = new RegisterUtil<>(this);
+		register.registerEvents(InventoryClickListener.class);
+		register.registerEvents(PlayerChooseInv.class);
+		register.registerEvents(TrueOrFalseChooseInv.class);
+		register.registerEvents(MoveEvent.class);
+		register.registerEvents(EatListener.class);
+		register.registerEvents(PickUpItemEvent.class);
+		register.registerEvents(PlayerInteractListener.class);
+		register.registerEvents(WorldOptionsListener.class);
+		register.registerEvents(PlayerOptionsListener.class);
+		register.registerEvents(PracticalListener.class);
+		register.registerEvents(ArmorInventory.class);
 		
-		pm.registerEvents(new PlayerInfo(this), this);
+		register.registerEvents(PlayerInfo.class);
 		
 	}
 	
 	public void registerCommands() {
-		getCommand("mctools").setExecutor(new CommandTools(this));
-		getCommand("playerinfo").setExecutor(new PlayerInfo(this));
+		RegisterUtil<Main> register = new RegisterUtil<>(this);
+		
+		register.registerCommand("mctools", "", new CommandTools(this));
+		register.registerCommand("playerinfo", "", new PlayerInfo(this);
 	}
 	
 	private void setAllowedInvs(){
