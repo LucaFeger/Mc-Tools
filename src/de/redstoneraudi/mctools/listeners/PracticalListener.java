@@ -68,11 +68,12 @@ public class PracticalListener implements Listener {
 		Player  p = e.getPlayer();
 		if(p.getGameMode() == GameMode.CREATIVE){
 			if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK){
-				if(e.getItem().getType() == Material.ENDER_PEARL){	
-					if(Global.enderpearlTogglePlayer.contains(p.getName())){
-						p.launchProjectile(EnderPearl.class);
+				if(e.getItem() == null || e.getItem().getType() == Material.AIR) return;
+					if(e.getItem().getType() == Material.ENDER_PEARL){	
+						if(Global.enderpearlTogglePlayer.contains(p.getName())){
+							p.launchProjectile(EnderPearl.class);
+						}
 					}
-				}
 			}
 		}
 	}
