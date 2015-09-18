@@ -23,10 +23,6 @@ public class ArmorInventory implements Listener{
 	public static HashMap<String, Inventory> invs = new HashMap<>();
 	public static ArrayList<String> use = new ArrayList<>();
 	
-	public static String[] colors = {"42:203:169", "127:95:208", "37:141:180", "54:213:103", "59:179:200",
-									 "35:102:190", "82:35:190", "29:149:59", "119:54:177", "236:48:200" , "54:203:189"};
-	public static Integer[] positions = {getPos(6, 1), getPos(7, 1), getPos(8, 1), getPos(5, 2), getPos(6, 2), getPos(7, 2), getPos(8, 2), getPos(5, 3), getPos(6, 3), getPos(7, 3), getPos(8, 3)};
-
 	public static void OpenArmorInventory(Player p) {
 		Inventory inv = Bukkit.createInventory(null, 5*9, "§3Armor");
 		
@@ -208,12 +204,12 @@ public class ArmorInventory implements Listener{
 		inv.setItem(getPos(8, 0), ItemBuilder.material(Material.IRON_CHESTPLATE).setDisplayName("§7Iron").build());
 		inv.setItem(getPos(5, 1), ItemBuilder.material(Material.DIAMOND_CHESTPLATE).setDisplayName("§bDiamond").build());
 		
-		for(int i = 0; i<colors.length ; i++){
-				int r = Integer.valueOf(colors[i].split(":")[0]);
-				int g = Integer.valueOf(colors[i].split(":")[1]);
-				int b = Integer.valueOf(colors[i].split(":")[2]);
+		for(OtherColorCodes colorCodes : OtherColorCodes.getColors()){
+				int r = colorCodes.getR();
+				int g = colorCodes.getG();
+				int b = colorCodes.getB();
 				
-				inv.setItem(positions[i], ItemBuilder.material(Material.LEATHER_CHESTPLATE).setColor(r,g,b).setDisplayName("§5Other Color").build());
+				inv.setItem(colorCodes.getPos(), ItemBuilder.material(Material.LEATHER_CHESTPLATE).setColor(r,g,b).setDisplayName(colorCodes.getName()).build());
 		}
 		
 		inv.setItem(4, new ItemStack(Material.AIR));
