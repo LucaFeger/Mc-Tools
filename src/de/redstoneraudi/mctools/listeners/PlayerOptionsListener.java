@@ -9,7 +9,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import de.redstoneraudi.mctools.McTools;
 import de.redstoneraudi.mctools.events.PlayerChooseEvent;
-import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 
 public class PlayerOptionsListener implements Listener{
 
@@ -27,20 +26,24 @@ public class PlayerOptionsListener implements Listener{
 				if(e.getInventory().getName().equals("§3§lPlayer-Options")){
 						if(e.getCurrentItem().getType() == Material.PISTON_BASE){
 							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
+							InventoryClickListener.openChooser(p, e.getCurrentItem(), e.getInventory());
 					}else 
 						if(e.getCurrentItem().getType() == Material.GOLDEN_APPLE){
 							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());
+							InventoryClickListener.openChooser(p, e.getCurrentItem(), e.getInventory());
 					}else
 						if(e.getCurrentItem().getType() == Material.CHEST){
 							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
+							InventoryClickListener.openChooser(p, e.getCurrentItem(), e.getInventory());
 					}else 
 						if(e.getCurrentItem().getType() == Material.SIGN){
 							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
-							PlayerChooseInv.openChooseInv(p, e.getCurrentItem(), e.getInventory());	
-					}
+							InventoryClickListener.openChooser(p, e.getCurrentItem(), e.getInventory());
+					}else
+						if(e.getCurrentItem().getType() == Material.NETHER_STAR){
+							p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+							InventoryClickListener.openChooser(p, e.getCurrentItem(), e.getInventory());
+						}
 				}
 				e.setCancelled(true);
 			}
@@ -64,6 +67,11 @@ public class PlayerOptionsListener implements Listener{
 		}else
 			if(e.getItem().getType() == Material.SIGN && e.getInventory().getName().equals("§3§lPlayer-Options")){
 				Bukkit.dispatchCommand(e.getPlayer(), "playerinfo " + e.getTarget().getName());
+		}else
+			if(e.getItem().getType() == Material.NETHER_STAR && e.getInventory().getName().equals("§3§lPlayer-Options")){
+				e.getTarget().spigot().respawn();
+				e.getPlayer().sendMessage(plugin.getPrefix() + "§aPlayer §5"+e.getTarget().getName()+ " §awas respawn!");
+				e.getTarget().sendMessage(plugin.getPrefix() + "§aYou was respanwn by §5" + e.getPlayer().getName() + "§a!");
 		}
 	}
 	

@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.redstoneraudi.mctools.cmd.CommandTools;
 import de.redstoneraudi.mctools.cmd.PlayerInfo;
+import de.redstoneraudi.mctools.cmd.Respawn;
 import de.redstoneraudi.mctools.listeners.EatListener;
 import de.redstoneraudi.mctools.listeners.InventoryClickListener;
 import de.redstoneraudi.mctools.listeners.MoveEvent;
@@ -19,7 +20,6 @@ import de.redstoneraudi.mctools.listeners.WorldOptionsListener;
 import de.redstoneraudi.mctools.other.RegisterUtil;
 import de.redstoneraudi.mctools.utils.ArmorInventory;
 import de.redstoneraudi.mctools.utils.Practical;
-import de.redstoneraudi.mctools.utils.chooser.PlayerChooseInv;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
 
 public class McTools extends JavaPlugin {
@@ -62,7 +62,6 @@ public class McTools extends JavaPlugin {
 	public void registerEvents() {
 		RegisterUtil<McTools> register = new RegisterUtil<>(this);
 		register.registerEvents(InventoryClickListener.class);
-		register.registerEvents(PlayerChooseInv.class);
 		register.registerEvents(TrueOrFalseChooseInv.class);
 		register.registerEvents(MoveEvent.class);
 		register.registerEvents(EatListener.class);
@@ -80,8 +79,9 @@ public class McTools extends JavaPlugin {
 	public void registerCommands() {
 		RegisterUtil<McTools> register = new RegisterUtil<>(this);
 		
-		register.registerCommand("mctools", "", new CommandTools(this));
+		register.registerCommand("mctools", "", new CommandTools(this), "mc-tools");
 		register.registerCommand("playerinfo", "", new PlayerInfo(this), "pi");
+		register.registerCommand("respawn", "", new Respawn(this));
 	}
 	
 	private void setAllowedInvs(){
