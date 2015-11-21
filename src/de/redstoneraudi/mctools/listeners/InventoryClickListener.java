@@ -21,6 +21,7 @@ import de.redstoneraudi.mctools.utils.DropItems;
 import de.redstoneraudi.mctools.utils.GiveBadApple;
 import de.redstoneraudi.mctools.utils.OpenInvUtils;
 import de.redstoneraudi.mctools.utils.PigCannon;
+import de.redstoneraudi.mctools.utils.PlayerCrash;
 import de.redstoneraudi.mctools.utils.TrollRocket;
 import de.redstoneraudi.mctools.utils.chooser.ExpandableInventory;
 import de.redstoneraudi.mctools.utils.chooser.TrueOrFalseChooseInv;
@@ -104,12 +105,15 @@ public class InventoryClickListener implements Listener {
 					if(e.getCurrentItem().getType() == Material.GOLD_HOE && e.getInventory().getName().equals("§3§lFun-Tools")){
 						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
 						openChooser(p, e.getCurrentItem(), e.getInventory());
-				}
+				} else
+					if(e.getCurrentItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lTroll-Items")){
+						p.sendMessage(plugin.getPrefix() + "§3Which Player is your target?");
+						openChooser(p, e.getCurrentItem(), e.getInventory());
+					}
 				
 			} catch(NullPointerException ex) {
 //				System.out.println(ex);
 			}
-			
 		e.setCancelled(true);
 		}
 	}
@@ -135,7 +139,10 @@ public class InventoryClickListener implements Listener {
 		}else
 			if(e.getItem().getType() == Material.DIAMOND && e.getInventory().getName().equals("§3§lTroll-Items")){
 				DropFakeDiamonds.dropDiamonds(e.getTarget().getLocation(), 8, 8);
-		}
+		} else
+			if(e.getItem().getType() == Material.BARRIER && e.getInventory().getName().equals("§3§lTroll-Items")) {
+				PlayerCrash.crashPlayer(e.getTarget());
+			}
 	}
 	
 	//Fun-Actions
