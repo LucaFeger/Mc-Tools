@@ -38,6 +38,7 @@ public class OpenInvUtils {
 		InventoryUtils.setItem(invTrollTool, 2, Material.GOLDEN_APPLE, "§5BadApple ", "§7Add an apple to someones inventory,", "§7which will kill him if he eats it");
 		InventoryUtils.setItem(invTrollTool, 3, Material.DIAMOND, "§5FakeDiamond", "§7Drops explosive diamonds around the player!");
 		InventoryUtils.setItem(invTrollTool, 4, Material.DISPENSER, "§5DropInv ", "§7Drops every item in the players inventory");
+		InventoryUtils.setItem(invTrollTool, 5, Material.BARRIER, "§5Crash ", "§cCrashes the Target Player");
 		p.openInventory(invTrollTool);
 	}
 
